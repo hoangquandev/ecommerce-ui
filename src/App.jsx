@@ -11,6 +11,7 @@ import Dashboard from './pages/admin/Dashboard'
 import AccountSetting from './pages/admin/AccountSetting'
 import CreateProduct from './pages/admin/products/CreateProduct'
 import ProductList from './pages/admin/products/ProductList'
+import Categories from './pages/admin/products/Categories'
 
 function App() {
   const theme = useTheme()
@@ -29,6 +30,7 @@ function App() {
             <Route path='' element={<Dashboard />} />
             <Route path='products' element={<ProductList />} />
             <Route path='products/create' element={<CreateProduct />} />
+            <Route path='products/categories' element={<Categories />} />
             <Route path='account-setting' element={<AccountSetting />} />
           </Route>
         </Routes>

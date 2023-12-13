@@ -6,11 +6,11 @@ import SearchInput from "../SearchInput";
 
 // ===============================================================
 const SearchArea = (props) => {
-    const { searchPlaceholder, buttonText } = props;
+    const { searchPlaceholder, buttonText, handleBtnClick, handleSearch, search } = props;
     const downSM = useMediaQuery((theme) => theme.breakpoints.down("sm"));
     return (
         <FlexBox mb={2} gap={2} justifyContent="space-between" flexWrap="wrap">
-            <SearchInput placeholder={searchPlaceholder} />
+            <SearchInput placeholder={searchPlaceholder} value={search} onChange={handleSearch} />
 
             <Button
                 color="info"
@@ -20,6 +20,7 @@ const SearchArea = (props) => {
                 sx={{
                     minHeight: 44,
                 }}
+                onClick={handleBtnClick}
             >
                 {buttonText}
             </Button>

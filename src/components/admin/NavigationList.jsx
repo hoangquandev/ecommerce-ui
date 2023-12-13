@@ -23,11 +23,11 @@ export const navigations = [
       },
       {
         name: "Category",
-        path: "/admin/categories",
+        path: "/admin/products/categories",
       },
       {
         name: "Brand",
-        path: "/admin/brands",
+        path: "/admin/products/brands",
       },
       {
         name: "Review",
