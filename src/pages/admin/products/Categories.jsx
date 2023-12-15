@@ -1,15 +1,14 @@
 import React, { useEffect, useState, useTransition } from 'react'
 import useMuiTable from '../../../hooks/useMuiTable';
-import { Box, Button, Card, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Stack, Table, TableBody, TableContainer, TextField } from '@mui/material';
+import { Box, Card, Dialog, DialogTitle, Stack, Table, TableBody, TableContainer, TextField } from '@mui/material';
 import { H3 } from '../../../components/Typography';
 import SearchArea from '../../../components/dashboard/SearchArea';
 import Scrollbar from '../../../components/Scrollbar';
 import TableHeader from '../../../components/data-table/TableHeader';
 import TablePagination from '../../../components/data-table/TablePagination';
 import CategoryRow from '../../../pages-sections/admin/CategoryRow';
-import { useFormik } from 'formik';
 import * as yup from "yup";
-import axios, { axiosPrivate } from '../../../apis/axios';
+import { axiosPrivate } from '../../../apis/axios';
 import CategoryForm from '../../../pages-sections/admin/products/ProductForm/CategoryForm';
 import { getAllCategories } from '../../../apis/product';
 

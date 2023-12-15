@@ -13,6 +13,7 @@ import CreateProduct from './pages/admin/products/CreateProduct'
 import ProductList from './pages/admin/products/ProductList'
 import Categories from './pages/admin/products/Categories'
 import NotFound404 from './pages/NotFound404'
+import Brands from './pages/admin/products/Brands'
 
 function App() {
   const theme = useTheme()
@@ -32,6 +33,7 @@ function App() {
             <Route path='products' element={<ProductList />} />
             <Route path='products/create' element={<CreateProduct />} />
             <Route path='products/categories' element={<Categories />} />
+            <Route path='products/brands' element={<Brands />} />
             <Route path='account-setting' element={<AccountSetting />} />
           </Route>
           <Route path='/*' element={<NotFound404 />} />

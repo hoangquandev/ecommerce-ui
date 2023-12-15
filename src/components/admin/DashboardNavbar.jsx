@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import Globe from '../icons/Globe';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountPopover from './AccountPopover';
-import { useSelector } from 'react-redux';
 import NotificationsPopover from './NotificationsPopover';
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
