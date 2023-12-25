@@ -1,4 +1,5 @@
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import api from "./axios";
 import axios, { axiosPrivate } from "./axios";
 
 
@@ -6,5 +7,5 @@ import axios, { axiosPrivate } from "./axios";
 
 // export const createProduct = (data) => axiosPrivate.post('/product/', data)
 
-export const getAllCategories = async () => await axios.get('/category')
+export const getAllCategories = async () => await api.get('/category')
 export const updateCategoryById = async (id) => await axiosPrivate.put(`/category/${id}`)

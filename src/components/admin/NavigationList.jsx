@@ -47,6 +47,11 @@ export const navigations = [
     path: "/admin/customers",
   },
   {
+    name: "Users",
+    icon: duotone.Customers,
+    path: "/admin/users",
+  },
+  {
     type: "label",
     label: "Vendor",
   },
@@ -54,22 +59,22 @@ export const navigations = [
   {
     name: "Shop Setting",
     icon: duotone.SiteSetting,
-    path: "/vendor/shop-settings",
+    path: "/admin/shop-settings",
   },
   {
     name: "Support Tickets",
     icon: duotone.ElementHub,
-    path: "/vendor/support-tickets",
+    path: "/admin/support-tickets",
   },
   {
     name: "Account Setting",
     icon: duotone.AccountSetting,
-    path: "/vendor/account-setting",
+    path: "/admin/account-setting",
   },
   {
     name: "Site Setting",
     icon: duotone.SiteSetting,
-    path: "/vendor/site-settings",
+    path: "/admin/site-settings",
   },
   {
     name: "Logout",

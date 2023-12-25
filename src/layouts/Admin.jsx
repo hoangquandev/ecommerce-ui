@@ -30,7 +30,6 @@ const Admin = () => {
     const [sidebarCompact, setSidebarCompact] = useState(0);
     const [showMobileSideBar, setShowMobileSideBar] = useState(0);// handle sidebar toggle for desktop device
     const auth = useSelector(state => state.auth)
-    const axiosPrivate = useAxiosPrivate();
 
     const handleCompactToggle = () =>
         setSidebarCompact((state) => (state ? 0 : 1)); // handle sidebar toggle in mobile device

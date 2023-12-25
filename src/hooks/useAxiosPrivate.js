@@ -56,6 +56,8 @@ const useAxiosPrivate = () => {
         //     }
         // );
 
+        // xử lí accesstoken và refreshtoken
+
         const requestIntercept = axiosPrivate.interceptors.request.use(
             config => {
                 if (!config.headers['Authorization']) {

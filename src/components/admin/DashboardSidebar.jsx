@@ -17,6 +17,7 @@ import { FlexBetween } from '../flex-box';
 import Scrollbar from '../Scrollbar';
 import { navigations } from './NavigationList';
 import SidebarAccordion from './SidebarAccordion';
+import logo from '../../assets/1.png'
 
 const TOP_HEADER_AREA = 70;
 
@@ -137,15 +138,11 @@ const DashboardSidebar = (props) => {
                 justifyContent={COMPACT ? "center" : "space-between"}
             >
                 <Avatar
-                    src={
-                        COMPACT
-                            ? "/assets/images/bazaar-white-sm.svg"
-                            : "/assets/images/logo.svg"
-                    }
+                    src={logo}
                     sx={{
                         borderRadius: 0,
-                        width: "auto",
-                        marginLeft: COMPACT ? 0 : 1,
+                        width: 100,
+                        marginLeft: COMPACT ? 0 : -2,
                     }}
                 />
 
