@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { store } from '../redux/store';
 import { logout } from '../redux/slice/authSlice';
-// const BASE_URL = 'https://shopdev.onrender.com/api';
-const BASE_URL = 'http://localhost:8000/api';
+const BASE_URL = 'https://shopdev.onrender.com/api';
+// const BASE_URL = 'http://localhost:8000/api';
 
 // const api = axios.create({
 //     baseURL: BASE_URL
