@@ -3,9 +3,7 @@ import * as yup from "yup";
 import { H3 } from "../../../components/Typography";
 import ProductForm from "../../../pages-sections/admin/products/ProductForm/ProductForm";
 // import { createProduct } from "../../../apis/product";
-import { useSelector } from "react-redux";
-import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
-import { axiosPrivate } from "../../../apis/axios";
+import api from "../../../apis/axios";
 // import api from "../../../apis/axios";
 // import axios from "axios";
 
@@ -33,7 +31,7 @@ export default function CreateProduct() {
     const handleFormSubmit = async (values) => {
         // console.log(values);
         // const res = await createProduct(values)
-        const res = await axiosPrivate.post('/product', values)
+        const res = await api.post('/products', values)
         console.log(res);
     };
 

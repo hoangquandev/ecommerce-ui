@@ -15,6 +15,7 @@ import Categories from './pages/admin/products/Categories'
 import NotFound404 from './pages/NotFound404'
 import Brands from './pages/admin/products/Brands'
 import UserList from './pages/admin/users/UserList'
+import Products from './pages/Products'
 
 function App() {
   const theme = useTheme()
@@ -26,6 +27,7 @@ function App() {
           <Route path='/' element={<Public topbarBgColor={theme.palette.grey[900]} />}>
             <Route path='' element={<Home />} />
             <Route path='user' element={<User />} />
+            <Route path='products' element={<Products />} />
           </Route>
           <Route path='/signup' element={<SignUp />} />
           <Route path='/login' element={<LoginPage />} />

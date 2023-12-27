@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     Button,
     Card,
@@ -14,6 +14,7 @@ import { Formik } from "formik";
 import DropZone from "../../../../components/DropZone";
 import { FlexBox } from "../../../../components/flex-box";
 import Image from "../../../../components/Image";
+import { getAllCategories } from "../../../../apis/product";
 
 const UploadImageBox = styled(Box)(({ theme }) => ({
     width: 70,
@@ -38,7 +39,7 @@ const StyledClear = styled(ClearIcon)(() => ({
 const ProductForm = (props) => {
     const { initialValues, validationSchema, handleFormSubmit } = props;
     const [files, setFiles] = useState([]); // HANDLE UPDATE NEW IMAGE VIA DROP ZONE
-
+    const [categories, setCategories] = useState([])
     const handleChangeDropZone = (files) => {
         files.forEach((file) =>
             Object.assign(file, {
@@ -51,6 +52,13 @@ const ProductForm = (props) => {
     const handleFileDelete = (file) => () => {
         setFiles((files) => files.filter((item) => item.name !== file.name));
     };
+    useEffect(() => {
+        const getCategories = async () => {
+            const res = await getAllCategories()
+            setCategories(res.data.data)
+        }
+        getCategories()
+    }, [])
 
     return (
         <Card
@@ -103,8 +111,12 @@ const ProductForm = (props) => {
                                     error={!!touched.category && !!errors.category}
                                     helperText={touched.category && errors.category}
                                 >
-                                    <MenuItem value="electronics">Electronics</MenuItem>
-                                    <MenuItem value="fashion">Fashion</MenuItem>
+                                    {categories.map(item => {
+                                        console.log(item);
+                                        return (
+                                            <MenuItem key={item._id} value={item._id}>{item.name}</MenuItem>
+                                        )
+                                    })}
                                 </TextField>
                             </Grid>
 

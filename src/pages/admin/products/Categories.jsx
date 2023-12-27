@@ -64,8 +64,8 @@ const Categories = () => {
     useEffect(() => {
         const getCategories = async () => {
             const res = await getAllCategories()
-            if (search) setCategories(res.data.filter(item => item.name.includes(search)))
-            else setCategories(res.data)
+            if (search) setCategories(res.data.data.filter(item => item.name.includes(search)))
+            else setCategories(res.data.data)
         }
         getCategories()
         // console.log(res);

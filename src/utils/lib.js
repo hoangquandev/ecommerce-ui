@@ -26,7 +26,10 @@ function getDateDifference(date) {
  * @param totalProduct - TOTAL PRODUCT NUMBER
  * @returns
  */
-
+function calculateAverageRating(ratings) {
+    const totalRating = ratings.reduce((sum, rating) => sum + rating.rating, 0);
+    return totalRating / ratings.length;
+}
 function renderProductCount(page, perPageProduct, totalProduct) {
     let startNumber = (page - 1) * perPageProduct;
     let endNumber = page * perPageProduct;
@@ -65,4 +68,4 @@ function currency(price, fraction = 2) {
     return formatCurrency.format(price);
 }
 
-export { renderProductCount, calculateDiscount, currency, getDateDifference };
+export { renderProductCount, calculateDiscount, currency, getDateDifference, calculateAverageRating };
