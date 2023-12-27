@@ -14,11 +14,12 @@ import { FlexBetween, FlexBox } from "../flex-box";
 import { useDispatch } from "react-redux";
 import { setBrand, setCategory, setMaxPrice, setMinPrice, setPriceRange, setRatingFilter } from "../../redux/slice/filterSlice";
 import { useEffect, useState } from "react";
-import { getAllCategories } from "../../apis/product";
+import { getAllBrands, getAllCategories } from "../../apis/product";
 import { useSearchParams } from "react-router-dom";
 
 const ProductFilterCard = ({ filter }) => {
     const [categories, setCategories] = useState([])
+    const [brands, setBrands] = useState([])
     const dispatch = useDispatch()
     const [price, setPrice] = useSearchParams()
     useEffect(() => {
@@ -63,6 +64,14 @@ const ProductFilterCard = ({ filter }) => {
         }
         getCategories()
     }, [])
+    useEffect(() => {
+        const getBrands = async () => {
+            const res = await getAllBrands()
+            setBrands(res.data.data)
+        }
+        getBrands()
+    }, [])
+    console.log(brands);
 
     const handleMinPriceChange = (e) => {
         setPrice({ min: e.target.value, max: filter.maxPrice })
@@ -185,7 +194,7 @@ const ProductFilterCard = ({ filter }) => {
 
             {/* BRAND VARIANT FILTER */}
             <H6 mb={2}>Brands</H6>
-            {brandList.map((item) => (
+            {brands.map((item) => (
                 <FormControlLabel
                     key={item}
                     sx={{
@@ -194,9 +203,9 @@ const ProductFilterCard = ({ filter }) => {
                     // onClick={handleFilterClick('brand', filter.brand ? [...filter.brand, item].join(',') : item)}
                     label={<Span color="inherit">{item}</Span>}
                     control={<Checkbox size="small" color="secondary"
-                        checked={filter.brand.includes(item)}
+                        checked={filter.brand.includes(item._id)}
                         onChange={handleBrandChange}
-                        value={item} />}
+                        value={item._id} />}
                 />
             ))}
 

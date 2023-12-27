@@ -9,6 +9,8 @@ export const getProducts = async () => {
         const filters = [];
         filters.push(`page=${filter.page}`)
         filters.push(`litmit=${filter.limit}`)
+        filters.push(`sortBy=${filter.sortBy}`)
+        filters.push(`sortOrder=${filter.sortOrder}`)
         if (filter.minPrice) filters.push(`minPrice=${filter.minPrice}`)
         if (filter.maxPrice) filters.push(`maxPrice=${filter.maxPrice}`)
 
@@ -43,4 +45,5 @@ export const getProducts = async () => {
 }
 
 export const getAllCategories = async () => await api.get('/categories')
+export const getAllBrands = async () => await api.get('/brand')
 export const updateCategoryById = async (id) => await axiosPrivate.put(`/category/${id}`)

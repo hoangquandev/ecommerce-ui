@@ -8,7 +8,9 @@ const initialState = {
     maxPrice: '',
     rating: [],
     page: 1,
-    limit: 10
+    limit: 10,
+    sortBy: 'createdAt',
+    sortOrder: 'desc'
 };
 
 const filterSlice = createSlice({
@@ -17,6 +19,12 @@ const filterSlice = createSlice({
     reducers: {
         setCategory: (state, action) => {
             state.category = action.payload;
+        },
+        setSortBy: (state, action) => {
+            state.sortBy = action.payload;
+        },
+        setSortOrder: (state, action) => {
+            state.sortOrder = action.payload;
         },
         setBrand: (state, action) => {
             state.brand = action.payload;
@@ -36,7 +44,7 @@ const filterSlice = createSlice({
     },
 });
 
-export const { setCategory, setBrand, setPriceRange, setRatingFilter, setPage, setMinPrice, setMaxPrice } = filterSlice.actions;
+export const { setCategory, setBrand, setPriceRange, setRatingFilter, setPage, setMinPrice, setMaxPrice, setSortBy, setSortOrder } = filterSlice.actions;
 export default filterSlice.reducer;
 
 

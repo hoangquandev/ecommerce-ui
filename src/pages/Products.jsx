@@ -7,6 +7,7 @@ import { Apps, ViewList } from '@mui/icons-material';
 import ProductFilterCard from '../components/products/ProductFilterCard';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductCard1List from '../components/products/ProductCard1List';
+import { setSortBy, setSortOrder } from '../redux/slice/filterSlice';
 
 const Products = () => {
     const [view, setView] = useState("grid");
@@ -18,13 +19,15 @@ const Products = () => {
     const dispatch = useDispatch();
     const filter = useSelector((state) => state.filter);
 
-
+    useEffect(() => {
+        dispatch(setSortBy('createdAt'))
+        dispatch(setSortOrder('desc'))
+    }, [])
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
                 const productsData = await getProducts()
-                console.log(productsData);
                 setProducts(productsData.products)
                 setTotalPages(productsData.totalPages)
                 setTotalProducts(productsData.totalProducts)
@@ -35,7 +38,10 @@ const Products = () => {
 
         fetchProducts()
     }, [filter])
-    console.log(products);
+    const handleSort = (order, sortby) => {
+        dispatch(setSortBy(sortby))
+        dispatch(setSortOrder(order))
+    }
 
     return (
         <>
@@ -72,7 +78,7 @@ const Products = () => {
                     >
                         <FlexBox alignItems="center" gap={1} flex="1 1 0">
                             <Paragraph color="grey.600" whiteSpace="pre">
-                                Short by:
+                                Sort by:
                             </Paragraph>
 
                             <TextField
@@ -80,15 +86,15 @@ const Products = () => {
                                 fullWidth
                                 size="small"
                                 variant="outlined"
-                                placeholder="Short by"
-                                defaultValue={sortOptions[0].value}
+                                placeholder="Sort by"
+                                defaultValue={sortOptions[1].label}
                                 sx={{
                                     flex: "1 1 0",
                                     minWidth: "150px",
                                 }}
                             >
                                 {sortOptions.map((item) => (
-                                    <MenuItem value={item.value} key={item.value}>
+                                    <MenuItem value={item.label} onClick={() => handleSort(item.order, item.value)} key={item.value}>
                                         {item.label}
                                     </MenuItem>
                                 ))}
@@ -161,20 +167,24 @@ const Products = () => {
 }
 const sortOptions = [
     {
-        label: "Relevance",
-        value: "Relevance",
+        label: "Oldest",
+        value: "createdAt",
+        order: "asc"
     },
     {
-        label: "Date",
-        value: "Date",
+        label: "Newest",
+        value: "createdAt",
+        order: "desc"
     },
     {
         label: "Price Low to High",
-        value: "Price Low to High",
+        value: "price",
+        order: "asc"
     },
     {
         label: "Price High to Low",
-        value: "Price High to Low",
+        value: "price",
+        order: "desc"
     },
 ];
 export default Products
