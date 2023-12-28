@@ -8,6 +8,7 @@ import ProductFilterCard from '../components/products/ProductFilterCard';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductCard1List from '../components/products/ProductCard1List';
 import { setSortBy, setSortOrder } from '../redux/slice/filterSlice';
+import ProductCard9List from '../components/products/ProductCard9List';
 
 const Products = () => {
     const [view, setView] = useState("grid");
@@ -94,7 +95,7 @@ const Products = () => {
                                 }}
                             >
                                 {sortOptions.map((item) => (
-                                    <MenuItem value={item.label} onClick={() => handleSort(item.order, item.value)} key={item.value}>
+                                    <MenuItem value={item.label} onClick={() => handleSort(item.order, item.value)} key={item.label}>
                                         {item.label}
                                     </MenuItem>
                                 ))}
@@ -155,8 +156,8 @@ const Products = () => {
                         {view === "grid" ? (
                             <ProductCard1List products={products} totalProducts={totalProducts} totalPages={totalPages} />
                         ) : (
-                            // <ProductCard9List products={products} />
-                            <></>
+                            <ProductCard9List products={products} totalProducts={totalProducts} totalPages={totalPages} />
+                            // <></>
                         )}
                     </Grid>
                 </Grid>

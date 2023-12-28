@@ -71,7 +71,6 @@ const ProductFilterCard = ({ filter }) => {
         }
         getBrands()
     }, [])
-    console.log(brands);
 
     const handleMinPriceChange = (e) => {
         setPrice({ min: e.target.value, max: filter.maxPrice })
@@ -80,10 +79,6 @@ const ProductFilterCard = ({ filter }) => {
     const handleMaxPriceChange = (e) => {
         setPrice({ min: filter.minPrice, max: e.target.value })
     };
-    useEffect(() => {
-        dispatch(setMinPrice(''))
-        dispatch(setMaxPrice(''))
-    }, [price])
     useEffect(() => {
         const min = setTimeout(() => {
             dispatch(setMinPrice(price.get('min')))
